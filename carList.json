@@ -1,0 +1,1312 @@
+[
+    {
+      "id": "car_001",
+      "make": "BMW",
+      "model": "X3",
+      "year": 2017,
+      "price": 7253,
+      "mileage": 55722,
+      "color": "Red",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_002",
+      "make": "Chevrolet",
+      "model": "Equinox",
+      "year": 2018,
+      "price": 7324,
+      "mileage": 101572,
+      "color": "White",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_003",
+      "make": "Chevrolet",
+      "model": "Cruze",
+      "year": 2011,
+      "price": 21432,
+      "mileage": 57676,
+      "color": "White",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_004",
+      "make": "Chevrolet",
+      "model": "Malibu",
+      "year": 2010,
+      "price": 23111,
+      "mileage": 31471,
+      "color": "Blue",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_005",
+      "make": "Ford",
+      "model": "Fusion",
+      "year": 2010,
+      "price": 13872,
+      "mileage": 84269,
+      "color": "Red",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_006",
+      "make": "Kia",
+      "model": "Optima",
+      "year": 2011,
+      "price": 10095,
+      "mileage": 68662,
+      "color": "Silver",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_007",
+      "make": "Ford",
+      "model": "Escape",
+      "year": 2012,
+      "price": 28847,
+      "mileage": 67624,
+      "color": "Red",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_008",
+      "make": "Toyota",
+      "model": "RAV4",
+      "year": 2021,
+      "price": 20691,
+      "mileage": 101349,
+      "color": "White",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_009",
+      "make": "Subaru",
+      "model": "Forester",
+      "year": 2016,
+      "price": 19779,
+      "mileage": 74951,
+      "color": "Red",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_010",
+      "make": "Hyundai",
+      "model": "Tucson",
+      "year": 2015,
+      "price": 5242,
+      "mileage": 90356,
+      "color": "Black",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_011",
+      "make": "Honda",
+      "model": "CR-V",
+      "year": 2011,
+      "price": 7124,
+      "mileage": 119453,
+      "color": "Black",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_012",
+      "make": "Ford",
+      "model": "Fusion",
+      "year": 2012,
+      "price": 23559,
+      "mileage": 76770,
+      "color": "Blue",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_013",
+      "make": "Honda",
+      "model": "Civic",
+      "year": 2013,
+      "price": 6001,
+      "mileage": 51973,
+      "color": "Black",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_014",
+      "make": "Toyota",
+      "model": "RAV4",
+      "year": 2018,
+      "price": 16714,
+      "mileage": 43542,
+      "color": "Blue",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_015",
+      "make": "Mazda",
+      "model": "Mazda6",
+      "year": 2012,
+      "price": 19684,
+      "mileage": 42738,
+      "color": "Blue",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_016",
+      "make": "Ford",
+      "model": "Escape",
+      "year": 2012,
+      "price": 19635,
+      "mileage": 73083,
+      "color": "Gray",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_017",
+      "make": "Kia",
+      "model": "Optima",
+      "year": 2016,
+      "price": 27476,
+      "mileage": 107587,
+      "color": "Red",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_018",
+      "make": "Mazda",
+      "model": "Mazda6",
+      "year": 2018,
+      "price": 24554,
+      "mileage": 83278,
+      "color": "Red",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_019",
+      "make": "Kia",
+      "model": "Optima",
+      "year": 2011,
+      "price": 17181,
+      "mileage": 68562,
+      "color": "Red",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_020",
+      "make": "Kia",
+      "model": "Sportage",
+      "year": 2017,
+      "price": 14469,
+      "mileage": 42506,
+      "color": "Blue",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_021",
+      "make": "Hyundai",
+      "model": "Sonata",
+      "year": 2018,
+      "price": 26789,
+      "mileage": 90074,
+      "color": "Blue",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_022",
+      "make": "Nissan",
+      "model": "Altima",
+      "year": 2021,
+      "price": 27026,
+      "mileage": 55891,
+      "color": "Blue",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_023",
+      "make": "Subaru",
+      "model": "Forester",
+      "year": 2016,
+      "price": 29010,
+      "mileage": 85550,
+      "color": "Gray",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_024",
+      "make": "Toyota",
+      "model": "Camry",
+      "year": 2021,
+      "price": 25890,
+      "mileage": 49979,
+      "color": "Blue",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_025",
+      "make": "Hyundai",
+      "model": "Sonata",
+      "year": 2014,
+      "price": 17287,
+      "mileage": 82652,
+      "color": "Red",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_026",
+      "make": "Subaru",
+      "model": "Forester",
+      "year": 2010,
+      "price": 8249,
+      "mileage": 35447,
+      "color": "Red",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_027",
+      "make": "Chevrolet",
+      "model": "Malibu",
+      "year": 2019,
+      "price": 13427,
+      "mileage": 47119,
+      "color": "Gray",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_028",
+      "make": "Subaru",
+      "model": "Legacy",
+      "year": 2012,
+      "price": 16915,
+      "mileage": 32892,
+      "color": "Red",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_029",
+      "make": "Chevrolet",
+      "model": "Cruze",
+      "year": 2017,
+      "price": 8675,
+      "mileage": 54910,
+      "color": "Silver",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_030",
+      "make": "Kia",
+      "model": "Sportage",
+      "year": 2012,
+      "price": 13145,
+      "mileage": 112955,
+      "color": "Blue",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_031",
+      "make": "Toyota",
+      "model": "Corolla",
+      "year": 2019,
+      "price": 15999,
+      "mileage": 32000,
+      "color": "White",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_032",
+      "make": "Honda",
+      "model": "Accord",
+      "year": 2017,
+      "price": 17500,
+      "mileage": 41000,
+      "color": "Gray",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_033",
+      "make": "Ford",
+      "model": "F-150",
+      "year": 2018,
+      "price": 28900,
+      "mileage": 52000,
+      "color": "Blue",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_034",
+      "make": "Nissan",
+      "model": "Rogue",
+      "year": 2020,
+      "price": 21000,
+      "mileage": 25000,
+      "color": "Black",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_035",
+      "make": "Volkswagen",
+      "model": "Golf",
+      "year": 2016,
+      "price": 12000,
+      "mileage": 60000,
+      "color": "Red",
+      "bodytype": "hatchback"
+    },
+    {
+      "id": "car_036",
+      "make": "Hyundai",
+      "model": "Elantra",
+      "year": 2015,
+      "price": 9500,
+      "mileage": 85000,
+      "color": "Silver",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_037",
+      "make": "Chevrolet",
+      "model": "Tahoe",
+      "year": 2019,
+      "price": 35000,
+      "mileage": 40000,
+      "color": "White",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_038",
+      "make": "Mazda",
+      "model": "CX-5",
+      "year": 2021,
+      "price": 26000,
+      "mileage": 15000,
+      "color": "Blue",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_039",
+      "make": "Subaru",
+      "model": "Impreza",
+      "year": 2018,
+      "price": 17000,
+      "mileage": 37000,
+      "color": "Gray",
+      "bodytype": "hatchback"
+    },
+    {
+      "id": "car_040",
+      "make": "Honda",
+      "model": "Fit",
+      "year": 2017,
+      "price": 11000,
+      "mileage": 54000,
+      "color": "Yellow",
+      "bodytype": "hatchback"
+    },
+    {
+      "id": "car_041",
+      "make": "Jeep",
+      "model": "Wrangler",
+      "year": 2015,
+      "price": 23500,
+      "mileage": 67000,
+      "color": "Green",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_042",
+      "make": "Toyota",
+      "model": "Prius",
+      "year": 2016,
+      "price": 14500,
+      "mileage": 58000,
+      "color": "Silver",
+      "bodytype": "hatchback"
+    },
+    {
+      "id": "car_043",
+      "make": "Chevrolet",
+      "model": "Silverado",
+      "year": 2020,
+      "price": 37000,
+      "mileage": 22000,
+      "color": "Black",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_044",
+      "make": "Ford",
+      "model": "Mustang",
+      "year": 2019,
+      "price": 27000,
+      "mileage": 31000,
+      "color": "Red",
+      "bodytype": "coupe"
+    },
+    {
+      "id": "car_045",
+      "make": "Honda",
+      "model": "Pilot",
+      "year": 2018,
+      "price": 25000,
+      "mileage": 42000,
+      "color": "White",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_046",
+      "make": "Mazda",
+      "model": "Mazda3",
+      "year": 2017,
+      "price": 13500,
+      "mileage": 47000,
+      "color": "Blue",
+      "bodytype": "hatchback"
+    },
+    {
+      "id": "car_047",
+      "make": "Hyundai",
+      "model": "Santa Fe",
+      "year": 2016,
+      "price": 16000,
+      "mileage": 69000,
+      "color": "Gray",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_048",
+      "make": "Volkswagen",
+      "model": "Jetta",
+      "year": 2015,
+      "price": 10500,
+      "mileage": 88000,
+      "color": "Black",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_049",
+      "make": "Nissan",
+      "model": "Sentra",
+      "year": 2019,
+      "price": 14200,
+      "mileage": 39000,
+      "color": "White",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_050",
+      "make": "Subaru",
+      "model": "Outback",
+      "year": 2021,
+      "price": 32000,
+      "mileage": 18000,
+      "color": "Brown",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_051",
+      "make": "Ford",
+      "model": "F-150",
+      "year": 2020,
+      "price": 34000,
+      "mileage": 25000,
+      "color": "Black",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_052",
+      "make": "Chevrolet",
+      "model": "Silverado 1500",
+      "year": 2019,
+      "price": 32000,
+      "mileage": 31000,
+      "color": "White",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_053",
+      "make": "Ram",
+      "model": "1500",
+      "year": 2018,
+      "price": 29500,
+      "mileage": 42000,
+      "color": "Red",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_054",
+      "make": "Toyota",
+      "model": "Tacoma",
+      "year": 2021,
+      "price": 37000,
+      "mileage": 18000,
+      "color": "Blue",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_055",
+      "make": "Nissan",
+      "model": "Frontier",
+      "year": 2017,
+      "price": 22000,
+      "mileage": 60000,
+      "color": "Gray",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_056",
+      "make": "GMC",
+      "model": "Sierra 1500",
+      "year": 2019,
+      "price": 33000,
+      "mileage": 35000,
+      "color": "Silver",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_057",
+      "make": "Chevrolet",
+      "model": "Colorado",
+      "year": 2016,
+      "price": 21000,
+      "mileage": 72000,
+      "color": "White",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_058",
+      "make": "Ford",
+      "model": "Ranger",
+      "year": 2020,
+      "price": 28500,
+      "mileage": 27000,
+      "color": "Red",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_059",
+      "make": "Toyota",
+      "model": "Tundra",
+      "year": 2018,
+      "price": 31000,
+      "mileage": 48000,
+      "color": "Black",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_060",
+      "make": "Ram",
+      "model": "2500",
+      "year": 2017,
+      "price": 35000,
+      "mileage": 53000,
+      "color": "Blue",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_061",
+      "make": "Honda",
+      "model": "Ridgeline",
+      "year": 2019,
+      "price": 29000,
+      "mileage": 39000,
+      "color": "Gray",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_062",
+      "make": "Volkswagen",
+      "model": "Tiguan",
+      "year": 2020,
+      "price": 24500,
+      "mileage": 28000,
+      "color": "White",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_063",
+      "make": "BMW",
+      "model": "X5",
+      "year": 2018,
+      "price": 42000,
+      "mileage": 45000,
+      "color": "Black",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_064",
+      "make": "Toyota",
+      "model": "Highlander",
+      "year": 2019,
+      "price": 32000,
+      "mileage": 35000,
+      "color": "Silver",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_065",
+      "make": "Honda",
+      "model": "Pilot",
+      "year": 2017,
+      "price": 28000,
+      "mileage": 52000,
+      "color": "Blue",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_066",
+      "make": "Ford",
+      "model": "Explorer",
+      "year": 2020,
+      "price": 35000,
+      "mileage": 25000,
+      "color": "Red",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_067",
+      "make": "Chevrolet",
+      "model": "Traverse",
+      "year": 2018,
+      "price": 26000,
+      "mileage": 48000,
+      "color": "Gray",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_068",
+      "make": "Nissan",
+      "model": "Murano",
+      "year": 2019,
+      "price": 29000,
+      "mileage": 32000,
+      "color": "White",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_069",
+      "make": "Hyundai",
+      "model": "Santa Fe",
+      "year": 2017,
+      "price": 22000,
+      "mileage": 58000,
+      "color": "Black",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_070",
+      "make": "Kia",
+      "model": "Sorento",
+      "year": 2020,
+      "price": 27000,
+      "mileage": 30000,
+      "color": "Silver",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_071",
+      "make": "Volkswagen",
+      "model": "Passat",
+      "year": 2018,
+      "price": 18000,
+      "mileage": 42000,
+      "color": "Blue",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_072",
+      "make": "BMW",
+      "model": "3 Series",
+      "year": 2019,
+      "price": 32000,
+      "mileage": 28000,
+      "color": "White",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_073",
+      "make": "Toyota",
+      "model": "Avalon",
+      "year": 2017,
+      "price": 24000,
+      "mileage": 45000,
+      "color": "Gray",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_074",
+      "make": "Honda",
+      "model": "Accord",
+      "year": 2020,
+      "price": 26000,
+      "mileage": 22000,
+      "color": "Red",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_075",
+      "make": "Nissan",
+      "model": "Maxima",
+      "year": 2018,
+      "price": 22000,
+      "mileage": 38000,
+      "color": "Black",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_076",
+      "make": "Mazda",
+      "model": "CX-5",
+      "year": 2019,
+      "price": 25000,
+      "mileage": 32000,
+      "color": "Silver",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_077",
+      "make": "Subaru",
+      "model": "Outback",
+      "year": 2020,
+      "price": 28000,
+      "mileage": 25000,
+      "color": "Blue",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_078",
+      "make": "Jeep",
+      "model": "Grand Cherokee",
+      "year": 2018,
+      "price": 32000,
+      "mileage": 40000,
+      "color": "White",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_079",
+      "make": "GMC",
+      "model": "Acadia",
+      "year": 2019,
+      "price": 30000,
+      "mileage": 30000,
+      "color": "Gray",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_080",
+      "make": "Ford",
+      "model": "Mustang",
+      "year": 2017,
+      "price": 28000,
+      "mileage": 35000,
+      "color": "Red",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_081",
+      "make": "Chevrolet",
+      "model": "Camaro",
+      "year": 2018,
+      "price": 32000,
+      "mileage": 28000,
+      "color": "Black",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_082",
+      "make": "Chevrolet",
+      "model": "Silverado 1500",
+      "year": 2016,
+      "price": 28000,
+      "mileage": 65000,
+      "color": "Red",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_083",
+      "make": "Ford",
+      "model": "Ranger",
+      "year": 2019,
+      "price": 31000,
+      "mileage": 22000,
+      "color": "Blue",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_084",
+      "make": "Toyota",
+      "model": "Camry",
+      "year": 2018,
+      "price": 22000,
+      "mileage": 42000,
+      "color": "Silver",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_085",
+      "make": "Honda",
+      "model": "Civic",
+      "year": 2020,
+      "price": 24000,
+      "mileage": 18000,
+      "color": "White",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_086",
+      "make": "Chevrolet",
+      "model": "2500",
+      "year": 2017,
+      "price": 38000,
+      "mileage": 45000,
+      "color": "Gray",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_087",
+      "make": "Ford",
+      "model": "F-150",
+      "year": 2019,
+      "price": 35000,
+      "mileage": 30000,
+      "color": "Black",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_088",
+      "make": "BMW",
+      "model": "X3",
+      "year": 2019,
+      "price": 36000,
+      "mileage": 25000,
+      "color": "Blue",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_089",
+      "make": "Toyota",
+      "model": "RAV4",
+      "year": 2018,
+      "price": 26000,
+      "mileage": 38000,
+      "color": "Red",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_090",
+      "make": "Honda",
+      "model": "CR-V",
+      "year": 2020,
+      "price": 28000,
+      "mileage": 20000,
+      "color": "White",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_091",
+      "make": "Ford",
+      "model": "Ranger",
+      "year": 2017,
+      "price": 25000,
+      "mileage": 55000,
+      "color": "Silver",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_092",
+      "make": "Chevrolet",
+      "model": "2500",
+      "year": 2018,
+      "price": 42000,
+      "mileage": 35000,
+      "color": "Red",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_093",
+      "make": "Nissan",
+      "model": "Altima",
+      "year": 2019,
+      "price": 20000,
+      "mileage": 32000,
+      "color": "Gray",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_094",
+      "make": "Hyundai",
+      "model": "Elantra",
+      "year": 2017,
+      "price": 16000,
+      "mileage": 48000,
+      "color": "Blue",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_095",
+      "make": "Kia",
+      "model": "Sportage",
+      "year": 2020,
+      "price": 23000,
+      "mileage": 25000,
+      "color": "Black",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_096",
+      "make": "Mazda",
+      "model": "Mazda3",
+      "year": 2018,
+      "price": 18000,
+      "mileage": 40000,
+      "color": "White",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_097",
+      "make": "Subaru",
+      "model": "Impreza",
+      "year": 2019,
+      "price": 22000,
+      "mileage": 28000,
+      "color": "Red",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_098",
+      "make": "Jeep",
+      "model": "Wrangler",
+      "year": 2017,
+      "price": 32000,
+      "mileage": 42000,
+      "color": "Silver",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_099",
+      "make": "GMC",
+      "model": "Sierra 1500",
+      "year": 2020,
+      "price": 38000,
+      "mileage": 20000,
+      "color": "Gray",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_100",
+      "make": "Volkswagen",
+      "model": "Golf",
+      "year": 2018,
+      "price": 19000,
+      "mileage": 35000,
+      "color": "Blue",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_101",
+      "make": "Toyota",
+      "model": "Tacoma",
+      "year": 2019,
+      "price": 34000,
+      "mileage": 30000,
+      "color": "Black",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_102",
+      "make": "Chevrolet",
+      "model": "Equinox",
+      "year": 2019,
+      "price": 18000,
+      "mileage": 35000,
+      "color": "Blue",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_103",
+      "make": "Hyundai",
+      "model": "Tucson",
+      "year": 2018,
+      "price": 16000,
+      "mileage": 42000,
+      "color": "Silver",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_104",
+      "make": "Subaru",
+      "model": "Legacy",
+      "year": 2018,
+      "price": 22000,
+      "mileage": 28000,
+      "color": "White",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_105",
+      "make": "Toyota",
+      "model": "Corolla",
+      "year": 2020,
+      "price": 20000,
+      "mileage": 15000,
+      "color": "Red",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_106",
+      "make": "Nissan",
+      "model": "Rogue",
+      "year": 2019,
+      "price": 24000,
+      "mileage": 30000,
+      "color": "Gray",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_107",
+      "make": "Chevrolet",
+      "model": "Tahoe",
+      "year": 2018,
+      "price": 32000,
+      "mileage": 45000,
+      "color": "Black",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_108",
+      "make": "Honda",
+      "model": "Fit",
+      "year": 2018,
+      "price": 14000,
+      "mileage": 38000,
+      "color": "Blue",
+      "bodytype": "hatchback"
+    },
+    {
+      "id": "car_109",
+      "make": "Toyota",
+      "model": "Prius",
+      "year": 2019,
+      "price": 22000,
+      "mileage": 25000,
+      "color": "White",
+      "bodytype": "hatchback"
+    },
+    {
+      "id": "car_110",
+      "make": "Chevrolet",
+      "model": "Silverado",
+      "year": 2019,
+      "price": 40000,
+      "mileage": 25000,
+      "color": "Red",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_111",
+      "make": "Volkswagen",
+      "model": "Jetta",
+      "year": 2017,
+      "price": 16000,
+      "mileage": 45000,
+      "color": "Silver",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_112",
+      "make": "Nissan",
+      "model": "Sentra",
+      "year": 2020,
+      "price": 18000,
+      "mileage": 20000,
+      "color": "Blue",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_113",
+      "make": "Ram",
+      "model": "1500",
+      "year": 2019,
+      "price": 32000,
+      "mileage": 30000,
+      "color": "White",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_114",
+      "make": "Nissan",
+      "model": "Frontier",
+      "year": 2018,
+      "price": 25000,
+      "mileage": 40000,
+      "color": "Black",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_115",
+      "make": "Chevrolet",
+      "model": "Colorado",
+      "year": 2017,
+      "price": 24000,
+      "mileage": 50000,
+      "color": "Red",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_116",
+      "make": "Toyota",
+      "model": "Tundra",
+      "year": 2019,
+      "price": 35000,
+      "mileage": 25000,
+      "color": "Silver",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_117",
+      "make": "Honda",
+      "model": "Ridgeline",
+      "year": 2020,
+      "price": 32000,
+      "mileage": 20000,
+      "color": "Blue",
+      "bodytype": "pickup"
+    },
+    {
+      "id": "car_118",
+      "make": "Volkswagen",
+      "model": "Tiguan",
+      "year": 2019,
+      "price": 22000,
+      "mileage": 35000,
+      "color": "Gray",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_119",
+      "make": "BMW",
+      "model": "X5",
+      "year": 2019,
+      "price": 45000,
+      "mileage": 30000,
+      "color": "White",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_120",
+      "make": "Toyota",
+      "model": "Highlander",
+      "year": 2020,
+      "price": 35000,
+      "mileage": 20000,
+      "color": "Black",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_121",
+      "make": "Ford",
+      "model": "Explorer",
+      "year": 2019,
+      "price": 32000,
+      "mileage": 35000,
+      "color": "Blue",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_122",
+      "make": "Chevrolet",
+      "model": "Traverse",
+      "year": 2019,
+      "price": 28000,
+      "mileage": 35000,
+      "color": "White",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_123",
+      "make": "Nissan",
+      "model": "Murano",
+      "year": 2020,
+      "price": 32000,
+      "mileage": 20000,
+      "color": "Red",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_124",
+      "make": "Kia",
+      "model": "Sorento",
+      "year": 2019,
+      "price": 25000,
+      "mileage": 40000,
+      "color": "Black",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_125",
+      "make": "Volkswagen",
+      "model": "Passat",
+      "year": 2019,
+      "price": 20000,
+      "mileage": 30000,
+      "color": "Silver",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_126",
+      "make": "BMW",
+      "model": "3 Series",
+      "year": 2020,
+      "price": 35000,
+      "mileage": 20000,
+      "color": "Blue",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_127",
+      "make": "Toyota",
+      "model": "Avalon",
+      "year": 2018,
+      "price": 26000,
+      "mileage": 35000,
+      "color": "White",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_128",
+      "make": "Nissan",
+      "model": "Maxima",
+      "year": 2019,
+      "price": 24000,
+      "mileage": 30000,
+      "color": "Red",
+      "bodytype": "sedan"
+    },
+    {
+      "id": "car_129",
+      "make": "Jeep",
+      "model": "Grand Cherokee",
+      "year": 2019,
+      "price": 35000,
+      "mileage": 30000,
+      "color": "Gray",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_130",
+      "make": "GMC",
+      "model": "Acadia",
+      "year": 2020,
+      "price": 32000,
+      "mileage": 20000,
+      "color": "Blue",
+      "bodytype": "suv"
+    },
+    {
+      "id": "car_131",
+      "make": "Chevrolet",
+      "model": "Camaro",
+      "year": 2019,
+      "price": 35000,
+      "mileage": 25000,
+      "color": "Red",
+      "bodytype": "sedan"
+    }
+  ]
