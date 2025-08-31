@@ -126,18 +126,63 @@ function App() {
     
     setChatHistory(prev => [...prev, newUserMessage])
 
-    // TODO: Replace with actual AI API call
-    // For now, simulate AI response
-    setTimeout(() => {
+    try {
+      // Call the AI endpoint
+      const response = await fetch(`${API_BASE}/ai-chat`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: userMessage })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to get AI response')
+      }
+
+      const aiData = await response.json()
+      
+      // Add AI response to chat history
       const aiResponse = {
         id: Date.now() + 1,
         type: 'ai',
-        content: `I understand you're looking for: "${userMessage}". I'll analyze this and convert it to structured filters. (This is a placeholder response - AI integration coming soon!)`,
+        content: aiData.message,
         timestamp: new Date().toLocaleTimeString()
       }
       setChatHistory(prev => [...prev, aiResponse])
+
+      // Apply the AI-generated filters to the main filter state
+      if (aiData.filters) {
+        const newFilters = {
+          make: aiData.filters.make || '',
+          model: aiData.filters.model || '',
+          minYear: aiData.filters.min_year || '',
+          maxYear: aiData.filters.max_year || '',
+          minPrice: aiData.filters.min_price || '',
+          maxPrice: aiData.filters.max_price || '',
+          minMileage: aiData.filters.min_mileage || '',
+          maxMileage: aiData.filters.max_mileage || '',
+          color: aiData.filters.color || '',
+          bodytype: aiData.filters.bodytype || ''
+        }
+        
+        setFilters(newFilters)
+        // The useEffect will automatically fetch cars when filters change
+      }
+    } catch (error) {
+      console.error('Error calling AI endpoint:', error)
+      
+      // Add error response to chat history
+      const errorResponse = {
+        id: Date.now() + 1,
+        type: 'ai',
+        content: 'Sorry, I encountered an error processing your request. Please try again or use the manual filters.',
+        timestamp: new Date().toLocaleTimeString()
+      }
+      setChatHistory(prev => [...prev, errorResponse])
+    } finally {
       setIsSubmitting(false)
-    }, 1000)
+    }
   }
 
   const formatPrice = (price) => {
