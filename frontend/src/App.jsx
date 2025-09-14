@@ -23,7 +23,7 @@ function App() {
   const [chatHistory, setChatHistory] = useState([])
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const API_BASE = 'http://localhost:8000'
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
   useEffect(() => {
     fetchFilterOptions()

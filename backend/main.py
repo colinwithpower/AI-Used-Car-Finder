@@ -1,25 +1,37 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
-import json
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 from pydantic import BaseModel
-import openai
+from pathlib import Path
+import json
+import os
+import re
+
+# OpenAI client (v1 SDK)
+try:
+    from openai import OpenAI
+except ImportError:
+    OpenAI = None  # friendly error if the package isn't installed
 
 app = FastAPI(title="Car Finder API", version="1.0.0")
 
-# OpenAI API configuration
-OPENAI_API_KEY = "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"
+# --------------------------- CORS ---------------------------------
+# For first deploy keep it permissive; later set ALLOW_ORIGINS env var
+allow_origins_env = os.environ.get("ALLOW_ORIGINS")
+if allow_origins_env:
+    ORIGINS = [o.strip() for o in allow_origins_env.split(",") if o.strip()]
+else:
+    ORIGINS = ["*"]
 
-# Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:5174"],  # Vite default port and alternative
+    allow_origins=ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Car model
+# --------------------------- Models -------------------------------
 class Car(BaseModel):
     id: str
     make: str
@@ -30,263 +42,188 @@ class Car(BaseModel):
     color: str
     bodytype: str
 
-# AI Chat request model
 class ChatRequest(BaseModel):
     message: str
 
-# AI Chat response model
 class ChatResponse(BaseModel):
     message: str
-    filters: dict
+    filters: Dict[str, Any]
     cars_found: int
 
-# Load car data
-def load_cars():
-    with open("../carList.json", "r") as f:
+# --------------------------- Data --------------------------------
+# carList.json must be next to this file after deploy
+DATA_PATH = (Path(__file__).parent / "carList.json").resolve()
+
+def load_cars() -> List[Dict[str, Any]]:
+    with open(DATA_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def extract_filters_from_ai_response(ai_response: str) -> dict:
-    """
-    Extract structured filters from AI response.
-    The AI should return filters in a specific format that we can parse.
-    """
-    try:
-        # Try to parse JSON from the AI response
-        # Look for JSON-like structure in the response
-        import re
-        
-        # Find JSON-like structure in the response
-        json_match = re.search(r'\{.*\}', ai_response, re.DOTALL)
-        if json_match:
-            filters_json = json_match.group()
-            filters = json.loads(filters_json)
-            return filters
-        else:
-            # If no JSON found, return empty filters
-            return {}
-    except:
-        return {}
-
-def get_available_options():
-    """Get available filter options for AI context"""
+def get_available_options() -> Dict[str, List[Any]]:
     cars = load_cars()
-    
-    makes = sorted(list(set(car["make"] for car in cars)))
-    models = sorted(list(set(car["model"] for car in cars)))
-    colors = sorted(list(set(car["color"] for car in cars)))
-    bodytypes = sorted(list(set(car["bodytype"] for car in cars)))
-    years = sorted(list(set(car["year"] for car in cars)))
-    
+    makes = sorted({c["make"] for c in cars})
+    models = sorted({c["model"] for c in cars})
+    colors = sorted({c["color"] for c in cars})
+    bodytypes = sorted({c["bodytype"] for c in cars})
+    years = sorted({c["year"] for c in cars})
     return {
         "makes": makes,
         "models": models,
         "colors": colors,
         "bodytypes": bodytypes,
-        "years": years
+        "years": years,
     }
 
+# ------------------------- Helpers -------------------------------
+def extract_filters_from_ai_response(ai_response: str) -> Dict[str, Any]:
+    """Pull the first {...} JSON block from the model response."""
+    try:
+        m = re.search(r"\{.*\}", ai_response, re.DOTALL)
+        if not m:
+            return {}
+        return json.loads(m.group())
+    except Exception:
+        return {}
+
+def apply_filters(cars: List[Dict[str, Any]], filters: Dict[str, Any]) -> List[Dict[str, Any]]:
+    out = cars
+    if filters.get("make"):
+        out = [c for c in out if c["make"].lower() == str(filters["make"]).lower()]
+    if filters.get("model"):
+        out = [c for c in out if c["model"].lower() == str(filters["model"]).lower()]
+    if filters.get("min_year") is not None:
+        out = [c for c in out if c["year"] >= int(filters["min_year"])]
+    if filters.get("max_year") is not None:
+        out = [c for c in out if c["year"] <= int(filters["max_year"])]
+    if filters.get("min_price") is not None:
+        out = [c for c in out if c["price"] >= int(filters["min_price"])]
+    if filters.get("max_price") is not None:
+        out = [c for c in out if c["price"] <= int(filters["max_price"])]
+    if filters.get("min_mileage") is not None:
+        out = [c for c in out if c["mileage"] >= int(filters["min_mileage"])]
+    if filters.get("max_mileage") is not None:
+        out = [c for c in out if c["mileage"] <= int(filters["max_mileage"])]
+    if filters.get("color"):
+        out = [c for c in out if c["color"].lower() == str(filters["color"]).lower()]
+    if filters.get("bodytype"):
+        out = [c for c in out if c["bodytype"].lower() == str(filters["bodytype"]).lower()]
+    return out
+
+# -------------------------- Routes -------------------------------
 @app.get("/")
-def read_root():
+def root():
     return {"message": "Car Finder API"}
+
+@app.get("/health")
+def health():
+    return {"ok": True, "data_file_present": DATA_PATH.exists()}
 
 @app.get("/cars", response_model=List[Car])
 def get_cars(
-    make: Optional[str] = Query(None, description="Filter by car make"),
-    model: Optional[str] = Query(None, description="Filter by car model"),
-    min_year: Optional[int] = Query(None, description="Minimum year"),
-    max_year: Optional[int] = Query(None, description="Maximum year"),
-    min_price: Optional[int] = Query(None, description="Minimum price"),
-    max_price: Optional[int] = Query(None, description="Maximum price"),
-    min_mileage: Optional[int] = Query(None, description="Minimum mileage"),
-    max_mileage: Optional[int] = Query(None, description="Maximum mileage"),
-    color: Optional[str] = Query(None, description="Filter by color"),
-    bodytype: Optional[str] = Query(None, description="Filter by body type")
+    make: Optional[str] = Query(None),
+    model: Optional[str] = Query(None),
+    min_year: Optional[int] = Query(None),
+    max_year: Optional[int] = Query(None),
+    min_price: Optional[int] = Query(None),
+    max_price: Optional[int] = Query(None),
+    min_mileage: Optional[int] = Query(None),
+    max_mileage: Optional[int] = Query(None),
+    color: Optional[str] = Query(None),
+    bodytype: Optional[str] = Query(None),
 ):
     cars = load_cars()
-    
-    # Apply filters
-    filtered_cars = cars
-    
-    # Debug: Print received parameters
-    print(f"Received filters: make={make}, model={model}, min_year={min_year}, max_year={max_year}, min_price={min_price}, max_price={max_price}, min_mileage={min_mileage}, max_mileage={max_mileage}, color={color}, bodytype={bodytype}")
-    
-    if make and make.strip():
-        filtered_cars = [car for car in filtered_cars if car["make"].lower() == make.lower().strip()]
-    
-    if model and model.strip():
-        filtered_cars = [car for car in filtered_cars if car["model"].lower() == model.lower().strip()]
-    
-    if min_year is not None:
-        filtered_cars = [car for car in filtered_cars if car["year"] >= min_year]
-    
-    if max_year is not None:
-        filtered_cars = [car for car in filtered_cars if car["year"] <= max_year]
-    
-    if min_price is not None:
-        filtered_cars = [car for car in filtered_cars if car["price"] >= min_price]
-    
-    if max_price is not None:
-        filtered_cars = [car for car in filtered_cars if car["price"] <= max_price]
-    
-    if min_mileage is not None:
-        filtered_cars = [car for car in filtered_cars if car["mileage"] >= min_mileage]
-    
-    if max_mileage is not None:
-        filtered_cars = [car for car in filtered_cars if car["mileage"] <= max_mileage]
-    
-    if color and color.strip():
-        filtered_cars = [car for car in filtered_cars if car["color"].lower() == color.lower().strip()]
-    
-    if bodytype and bodytype.strip():
-        filtered_cars = [car for car in filtered_cars if car["bodytype"].lower() == bodytype.lower().strip()]
-    
-    print(f"Filtered cars count: {len(filtered_cars)}")
-    return filtered_cars
+    filters = {
+        "make": make,
+        "model": model,
+        "min_year": min_year,
+        "max_year": max_year,
+        "min_price": min_price,
+        "max_price": max_price,
+        "min_mileage": min_mileage,
+        "max_mileage": max_mileage,
+        "color": color,
+        "bodytype": bodytype,
+    }
+    return apply_filters(cars, filters)
 
 @app.get("/filters")
-def get_filter_options():
-    """Get available filter options for dropdowns"""
-    cars = load_cars()
-    
-    makes = sorted(list(set(car["make"] for car in cars)))
-    models = sorted(list(set(car["model"] for car in cars)))
-    colors = sorted(list(set(car["color"] for car in cars)))
-    bodytypes = sorted(list(set(car["bodytype"] for car in cars)))
-    years = sorted(list(set(car["year"] for car in cars)))
-    
-    return {
-        "makes": makes,
-        "models": models,
-        "colors": colors,
-        "bodytypes": bodytypes,
-        "years": years
-    }
+def filter_options():
+    return get_available_options()
 
 @app.post("/ai-chat", response_model=ChatResponse)
 async def ai_chat(request: ChatRequest):
     """
-    AI endpoint that converts user description into structured filters
+    Convert user's free text to structured filters with OpenAI, then filter cars.
     """
     try:
-        # Get available options for context
-        available_options = get_available_options()
-        
-        # Create system prompt with available options
-        system_prompt = f"""You are a helpful car search assistant. Convert user descriptions into structured filters.
+        if OpenAI is None:
+            raise RuntimeError("openai package not installed")
 
-Available options in our database:
-- Makes: {', '.join(available_options['makes'])}
-- Models: {', '.join(available_options['models'])}
-- Colors: {', '.join(available_options['colors'])}
-- Body Types: {', '.join(available_options['bodytypes'])}
-- Years: {min(available_options['years'])} to {max(available_options['years'])}
+        api_key = os.environ.get("OPENAI_API_KEY") 
+        if not api_key:
+            raise RuntimeError("OPENAI_API_KEY is not set")
 
-Extract filters from user input and return ONLY a JSON object with these fields:
-{{
-    "make": "string or null",
-    "model": "string or null", 
-    "min_year": "integer or null",
-    "max_year": "integer or null",
-    "min_price": "integer or null",
-    "max_price": "integer or null",
-    "min_mileage": "integer or null",
-    "max_mileage": "integer or null",
-    "color": "string or null",
-    "bodytype": "string or null"
-}}
+        client = OpenAI(api_key=api_key)
 
-Only include fields that are explicitly mentioned or can be reasonably inferred from the user's request.
-For price and mileage, extract numeric values and convert to integers.
-For body types, use: "suv", "sedan", "truck", "coupe", "convertible", "wagon", "hatchback"
-Return ONLY the JSON object, no additional text."""
+        opts = get_available_options()
+        system_prompt = (
+            "You are a helpful car search assistant. Convert user descriptions into a JSON "
+            "object with keys: make, model, min_year, max_year, min_price, max_price, "
+            "min_mileage, max_mileage, color, bodytype.\n\n"
+            f"Available makes: {', '.join(opts['makes'])}\n"
+            f"Available models: {', '.join(opts['models'])}\n"
+            f"Available colors: {', '.join(opts['colors'])}\n"
+            f"Available body types: {', '.join(opts['bodytypes'])}\n"
+            f"Year range: {min(opts['years'])}..{max(opts['years'])}\n\n"
+            "Heuristics:\n"
+            '- "low mileage" → max_mileage=50000\n'
+            '- "high mileage" → min_mileage=100000\n'
+            '- "cheap/affordable/budget" → max_price=15000 (budget→10000)\n'
+            '- "expensive/luxury/premium" → min_price=30000 (expensive→25000)\n'
+            '- "new/newer/recent" → min_year=2020\n'
+            '- "older/vintage" → max_year=2015\n\n'
+            "Return ONLY the JSON object. No extra text."
+        )
 
-        # Call OpenAI API using the new format
-        client = openai.OpenAI(api_key=OPENAI_API_KEY)
-        response = client.chat.completions.create(
+        resp = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": request.message}
+                {"role": "user", "content": request.message},
             ],
             max_tokens=200,
-            temperature=0.1
-        )
-        
-        ai_response = response.choices[0].message.content.strip()
-        
-        # Extract filters from AI response
-        filters = extract_filters_from_ai_response(ai_response)
-        
-        # Apply filters to get cars
-        cars = load_cars()
-        filtered_cars = cars
-        
-        # Apply each filter
-        if filters.get("make"):
-            filtered_cars = [car for car in filtered_cars if car["make"].lower() == filters["make"].lower()]
-        
-        if filters.get("model"):
-            filtered_cars = [car for car in filtered_cars if car["model"].lower() == filters["model"].lower()]
-        
-        if filters.get("min_year"):
-            filtered_cars = [car for car in filtered_cars if car["year"] >= filters["min_year"]]
-        
-        if filters.get("max_year"):
-            filtered_cars = [car for car in filtered_cars if car["year"] <= filters["max_year"]]
-        
-        if filters.get("min_price"):
-            filtered_cars = [car for car in filtered_cars if car["price"] >= filters["min_price"]]
-        
-        if filters.get("max_price"):
-            filtered_cars = [car for car in filtered_cars if car["price"] <= filters["max_price"]]
-        
-        if filters.get("min_mileage"):
-            filtered_cars = [car for car in filtered_cars if car["mileage"] >= filters["min_mileage"]]
-        
-        if filters.get("max_mileage"):
-            filtered_cars = [car for car in filtered_cars if car["mileage"] <= filters["max_mileage"]]
-        
-        if filters.get("color"):
-            filtered_cars = [car for car in filtered_cars if car["color"].lower() == filters["color"].lower()]
-        
-        if filters.get("bodytype"):
-            filtered_cars = [car for car in filtered_cars if car["bodytype"].lower() == filters["bodytype"].lower()]
-        
-        # Create user-friendly message
-        applied_filters = []
-        if filters.get("make"): applied_filters.append(f"Make: {filters['make']}")
-        if filters.get("model"): applied_filters.append(f"Model: {filters['model']}")
-        if filters.get("color"): applied_filters.append(f"Color: {filters['color']}")
-        if filters.get("bodytype"): applied_filters.append(f"Body Type: {filters['bodytype']}")
-        if filters.get("min_year") or filters.get("max_year"):
-            year_range = f"Year: {filters.get('min_year', 'Any')} - {filters.get('max_year', 'Any')}"
-            applied_filters.append(year_range)
-        if filters.get("min_price") or filters.get("max_price"):
-            price_range = f"Price: ${filters.get('min_price', 'Any')} - ${filters.get('max_price', 'Any')}"
-            applied_filters.append(price_range)
-        if filters.get("min_mileage") or filters.get("max_mileage"):
-            mileage_range = f"Mileage: {filters.get('min_mileage', 'Any')} - {filters.get('max_mileage', 'Any')} miles"
-            applied_filters.append(mileage_range)
-        
-        if applied_filters:
-            message = f"I found {len(filtered_cars)} cars matching your criteria: {', '.join(applied_filters)}"
-        else:
-            message = f"I found {len(filtered_cars)} cars in our database. Try being more specific with your requirements!"
-        
-        return ChatResponse(
-            message=message,
-            filters=filters,
-            cars_found=len(filtered_cars)
-        )
-        
-    except Exception as e:
-        print(f"Error in AI chat: {str(e)}")
-        return ChatResponse(
-            message="Sorry, I encountered an error processing your request. Please try again or use the manual filters.",
-            filters={},
-            cars_found=0
+            temperature=0.1,
         )
 
+        ai_text = resp.choices[0].message.content.strip()
+        filters = extract_filters_from_ai_response(ai_text)
+
+        cars = load_cars()
+        filtered = apply_filters(cars, filters)
+
+        parts = []
+        if filters.get("make"): parts.append(f"Make: {filters['make']}")
+        if filters.get("model"): parts.append(f"Model: {filters['model']}")
+        if filters.get("color"): parts.append(f"Color: {filters['color']}")
+        if filters.get("bodytype"): parts.append(f"Body Type: {filters['bodytype']}")
+        if filters.get("min_year") or filters.get("max_year"):
+            parts.append(f"Year: {filters.get('min_year','Any')} - {filters.get('max_year','Any')}")
+        if filters.get("min_price") or filters.get("max_price"):
+            parts.append(f"Price: {filters.get('min_price','Any')} - {filters.get('max_price','Any')}")
+        if filters.get("min_mileage") or filters.get("max_mileage"):
+            parts.append(f"Mileage: {filters.get('min_mileage','Any')} - {filters.get('max_mileage','Any')}")
+
+        if parts:
+            msg = f"I found {len(filtered)} cars matching: " + ", ".join(parts)
+        else:
+            msg = f"I found {len(filtered)} cars in our database. Try adding more details."
+
+        return ChatResponse(message=msg, filters=filters, cars_found=len(filtered))
+
+    except Exception as e:
+        print(f"[ai-chat] error: {e}")
+        return ChatResponse(message="Sorry, there was a problem.", filters={}, cars_found=0)
+
+# Local dev (not used on EB)
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
